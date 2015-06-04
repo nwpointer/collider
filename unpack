@@ -1,0 +1,118 @@
+#! /usr/local/Cellar/icarus-verilog/0.9.7/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fd74a40bdf0 .scope module, "unpack" "unpack" 2 4;
+ .timescale 0 0;
+P_0x7fd74a4070b8 .param/l "gets" 2 24, +C4<0>;
+P_0x7fd74a4070e0 .param/l "puts" 2 24, +C4<01>;
+v0x7fd74a409890_0 .net "clk", 0 0, C4<z>; 0 drivers
+v0x7fd74a41bc50_0 .net "e", 0 0, C4<z>; 0 drivers
+v0x7fd74a41bce0 .array "es", 0 4, 10 0;
+v0x7fd74a41bd60_0 .net "et", 0 0, C4<z>; 0 drivers
+v0x7fd74a41bde0_0 .net "eta", 0 0, C4<z>; 0 drivers
+v0x7fd74a41bea0 .array "etas", 0 4, 4 0;
+v0x7fd74a41bf20 .array "ets", 0 4, 10 0;
+v0x7fd74a41bfe0_0 .var/i "i", 31 0;
+v0x7fd74a41c060_0 .var "index", 0 31;
+v0x7fd74a41c130_0 .net "io", 0 0, C4<z>; 0 drivers
+v0x7fd74a41c1b0_0 .net "phi", 0 0, C4<z>; 0 drivers
+v0x7fd74a41c290 .array "phis", 0 4, 4 0;
+v0x7fd74a41c310_0 .net "rst", 0 0, C4<z>; 0 drivers
+E_0x7fd74a4071a0 .event posedge, v0x7fd74a41c310_0, v0x7fd74a409890_0;
+    .scope S_0x7fd74a40bdf0;
+T_0 ;
+    %wait E_0x7fd74a4071a0;
+    %load/v 8, v0x7fd74a41c310_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x7fd74a41c060_0, 0, 0;
+    %set/v v0x7fd74a41bfe0_0, 0, 32;
+T_0.2 ;
+    %load/v 8, v0x7fd74a41bfe0_0, 32;
+   %cmpi/s 8, 8, 32;
+    %jmp/0xz T_0.3, 5;
+    %ix/getv/s 3, v0x7fd74a41bfe0_0;
+    %jmp/1 t_0, 4;
+    %ix/load 0, 5, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x7fd74a41bea0, 0, 0;
+t_0 ;
+    %ix/getv/s 3, v0x7fd74a41bfe0_0;
+    %jmp/1 t_1, 4;
+    %ix/load 0, 5, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x7fd74a41c290, 0, 0;
+t_1 ;
+    %ix/getv/s 3, v0x7fd74a41bfe0_0;
+    %jmp/1 t_2, 4;
+    %ix/load 0, 11, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x7fd74a41bf20, 0, 0;
+t_2 ;
+    %ix/getv/s 3, v0x7fd74a41bfe0_0;
+    %jmp/1 t_3, 4;
+    %ix/load 0, 11, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x7fd74a41bce0, 0, 0;
+t_3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0x7fd74a41bfe0_0, 32;
+    %set/v v0x7fd74a41bfe0_0, 8, 32;
+    %jmp T_0.2;
+T_0.3 ;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x7fd74a41c130_0, 1;
+    %cmpi/u 8, 1, 1;
+    %jmp/1 T_0.4, 6;
+    %cmpi/u 8, 0, 1;
+    %jmp/1 T_0.5, 6;
+    %jmp T_0.6;
+T_0.4 ;
+    %load/v 8, v0x7fd74a41c060_0, 32;
+    %mov 40, 0, 1;
+    %addi 8, 1, 33;
+    %set/v v0x7fd74a41c060_0, 8, 32;
+    %load/v 8, v0x7fd74a41bde0_0, 1;
+    %mov 9, 0, 4;
+    %ix/getv 3, v0x7fd74a41c060_0;
+   %jmp/1 t_4, 4;
+   %ix/load 1, 0, 0;
+   %set/av v0x7fd74a41bea0, 8, 5;
+t_4 ;
+    %load/v 8, v0x7fd74a41c1b0_0, 1;
+    %mov 9, 0, 4;
+    %ix/getv 3, v0x7fd74a41c060_0;
+   %jmp/1 t_5, 4;
+   %ix/load 1, 0, 0;
+   %set/av v0x7fd74a41c290, 8, 5;
+t_5 ;
+    %load/v 8, v0x7fd74a41bd60_0, 1;
+    %mov 9, 0, 10;
+    %ix/getv 3, v0x7fd74a41c060_0;
+   %jmp/1 t_6, 4;
+   %ix/load 1, 0, 0;
+   %set/av v0x7fd74a41bf20, 8, 11;
+t_6 ;
+    %load/v 8, v0x7fd74a41bc50_0, 1;
+    %mov 9, 0, 10;
+    %ix/getv 3, v0x7fd74a41c060_0;
+   %jmp/1 t_7, 4;
+   %ix/load 1, 0, 0;
+   %set/av v0x7fd74a41bce0, 8, 11;
+t_7 ;
+    %jmp T_0.6;
+T_0.5 ;
+    %jmp T_0.6;
+T_0.6 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "unpack.v";
