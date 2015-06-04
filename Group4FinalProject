@@ -1,0 +1,6 @@
+module Group4FinalProject;
+initial begin
+	$display("jghjkghjh");
+	#10 $finish;
+	end
+endmodule
