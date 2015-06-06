@@ -15,13 +15,13 @@ module unpack(clk, rst, io, eta, phi, et, e, eout, etout);
 	reg[0:31] index;
 	integer i;
 
-	reg [7:0] etas [1023:0]; // 32 blocks of 32
-	reg [7:0] phis [1023:0]; // 32 blocks of 32
-	reg [7:0] ets [1023:0];
-	reg [7:0] es [1023:0];
+	reg [9:0] etas [1023:0]; // 32 blocks of 32
+	reg [9:0] phis [1023:0]; // 32 blocks of 32
+	reg [9:0] ets [1023:0];
+	reg [9:0] es [1023:0];
 
-	reg[7:0] et_temp;
-	reg[7:0] e_temp;
+	reg[9:0] et_temp;
+	reg[9:0] e_temp;
 
 	localparam gets = 0, puts = 1;
 
@@ -56,6 +56,7 @@ module unpack(clk, rst, io, eta, phi, et, e, eout, etout);
 	end
 
 	// Outputs
+	
 	assign etout = et_temp;
 	assign eout = e_temp;
 
