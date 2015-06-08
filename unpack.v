@@ -1,7 +1,7 @@
 // May 28 2015
 // Nathan Pointer
 
-module unpack(clk, rst, io, eta, phi, et, e, eout, etout);
+module unpack(clk, rst, io, eta, phi, et, e, eout, etout, phiout, etaout);
 	input clk;
 	input rst;
 	input eta; // 32
@@ -11,6 +11,8 @@ module unpack(clk, rst, io, eta, phi, et, e, eout, etout);
 	input io;
 	output eout;
 	output etout;
+	output phiout;
+	output etaout;
 
 	reg[0:31] index;
 	integer i;
@@ -22,7 +24,9 @@ module unpack(clk, rst, io, eta, phi, et, e, eout, etout);
 
 	reg[9:0] et_temp;
 	reg[9:0] e_temp;
-
+	reg[9:0] eta_temp;
+	reg[9:0] phi_temp;
+	
 	localparam gets = 0, puts = 1;
 
 	always @(posedge clk or posedge rst) begin
@@ -47,17 +51,21 @@ module unpack(clk, rst, io, eta, phi, et, e, eout, etout);
 					end
 				gets:
 					begin
-						i = eta + (phi*32);
+						// In Gets mode, using eta as an integer
+						i = eta;
 						et_temp = ets[i];
 						e_temp = es[i];	
+						eta_temp = etas[i];
+						phi_temp = phis[i];
 					end
 			endcase
 		end
 	end
 
 	// Outputs
-	
 	assign etout = et_temp;
 	assign eout = e_temp;
+	assign etaout = eta_temp;
+	assign phiout = phi_temp;
 
 endmodule
